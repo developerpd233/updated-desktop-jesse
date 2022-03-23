@@ -1,0 +1,55 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin:0
+}
+
+.custom-divider::before {
+  content: '';
+  background: #DA792D !important;
+  width: 80px;
+  height: 5px;
+  position: absolute;
+  margin-top: -2px;
+}
+
+.active {
+  color:#C67B4D !important;
+  /* border-bottom: 2px solid green; */
+}
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(24%) sepia(85%) saturate(0%) hue-rotate(356deg)
+    brightness(107%) contrast(117%);
+}
+
+.radios input:checked+span:after {
+  opacity: 1;
+}
+
+
+.MuiButtonBase-root-MuiRadio-root.Mui-checked {
+  color:'yellow'
+}
+
+.table-scroll::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 0;
+	background-color: transparent;
+}
+
+.table-scroll::-webkit-scrollbar {
+	width: 0px;
+	background-color: transparent;
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+	border-radius: 0;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: transparent;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  border-bottom: 2px solid #ccc;
+}
