@@ -11,7 +11,7 @@ export const userLogin = (data: object) => (dispatch: Dispatch): any => {
     url: `${baseURL}login`,
     headers: {
         Accept: "application/json",
-    },
+    },   
     data: data
   }).then((response: any) => {
     return dispatch({ type: LOGIN_SUCCESS, response: response });

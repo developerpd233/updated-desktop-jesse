@@ -15,7 +15,7 @@ const ProxiesScreen = lazy(() => import('../screens/ProxiesScreen'))
 const NewProxyScreen = lazy(() => import('../screens/ProxiesScreen/NewProxyScreen'))
 const OrderScreen = lazy(() => import('../screens/OrderScreen'))
 const SettingScreen = lazy(() => import('../screens/SettingScreen'))
-
+const  StartScreen  = lazy(() => import('../screens/startUpScreen/index'))
 const MainApp = lazy(() => import("../container/App/MainApp"))
 
 interface MyState {
@@ -57,6 +57,7 @@ class Routes extends React.Component<myProps, MyState> {
                                   }
                                 }}
                               /> */}
+                              <Route exact path='/startUpScreen' component={()=> (<AppStructure><StartScreen /></AppStructure>)} />
                               <Route exact path='/task' component={()=> (<AppStructure><TaskScreen /></AppStructure>)} />
                               <Route exact path='/new-task' component={()=> (<AppStructure><NewTaskScreen /></AppStructure>)} />
                               <Route exact path='/proxies' component={()=> (<AppStructure><ProxiesScreen /></AppStructure>)} />

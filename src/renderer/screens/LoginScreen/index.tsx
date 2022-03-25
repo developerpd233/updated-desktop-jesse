@@ -38,7 +38,7 @@ const LoginScreen = () => {
       let result: any = await dispatch(userLogin(data))
       if (result.type === 'LOGIN_SUCCESS') {
         sessionStorage.setItem('token', result.response.data.data.token)
-        history.push("/task")
+        history.push("/startUpScreen")
       }
       else if (result.type === 'LOGIN_ERROR') {
         console.log('fail')

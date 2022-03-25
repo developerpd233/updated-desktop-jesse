@@ -1,4 +1,4 @@
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import BackgroundImage from '../../assets/bg.png'
 import { CssGradientButton } from '../../components/Button'
 import { useHistory } from "react-router-dom"
@@ -26,7 +26,7 @@ const ProfileScreen = () => {
   const {getAllProfileReducer} = useSelector((state: RootState) => {
     return state
   })
-
+console.log(getAllProfileReducer)
   function maskify(cc: string) {
     // cc = numberFormat(cc)
     return cc.replace(/.(?=.{4})/g, "x");
@@ -121,8 +121,12 @@ const ProfileScreen = () => {
           </Box>
         </Grid>
       </Box>
-      {/* <TableComponent columns={profileColumns} rows={rows} /> */}
-      <TableComponent columns={profileColumns} rows={rows} loader={getAllProfileReducer?.loading} />
+    
+       <TableComponent columns={profileColumns} rows={rows} loader={getAllProfileReducer?.loading} />
+      {/* <Box display={'flex'} justifyContent={'center'} alignItems={'center'} >
+      <Typography sx={{fontSize:"100px"}} >Coming soon</Typography>
+      </Box> */}
+     
 
       {/* {!getAllProfileReducer.loading ?
           <TableComponent columns={profileColumns} rows={rows} />

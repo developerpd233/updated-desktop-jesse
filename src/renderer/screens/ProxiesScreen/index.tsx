@@ -111,6 +111,7 @@ const ProxiesScreen = () => {
         </Grid>
       </Box>
       <Box sx={{ paddingTop:5, paddingLeft:10, paddingRight:10, overflow: 'hidden' }}>
+    
         <TableComponent columns={proxiesolumns} rows={rows} loader={getAllProxyReducer?.loading} />
       </Box>
       <Notifications notify={notify} setNotify={setNotify } />
