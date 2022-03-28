@@ -65,7 +65,7 @@ class Routes extends React.Component<myProps, MyState> {
                               <Route exact path='/profile' component={()=> (<AppStructure><ProfileScreen /></AppStructure>)} />
                               <Route exact path='/new-profile' component={()=> (<AppStructure><NewProfileScreen /></AppStructure>)} />
                               <Route exact path='/orders' component={()=> (<AppStructure><OrderScreen /></AppStructure>)} />
-                              <Route exact path='/raffles' component={()=> (<AppStructure><ProfileScreen /></AppStructure>)} />
+                              {/* <Route exact path='/raffles' component={()=> (<AppStructure><ProfileScreen /></AppStructure>)} /> */}
                               <Route exact path='/new-task/:id' component={()=> (<AppStructure><NewTaskScreen /></AppStructure>)} />
                               <Route exact path='/new-profile/:id' component={()=> (<AppStructure><NewProfileScreen /></AppStructure>)} />
                               <Route exact path='/new-proxies/:id' component={()=> (<AppStructure><NewProxyScreen /></AppStructure>)} />

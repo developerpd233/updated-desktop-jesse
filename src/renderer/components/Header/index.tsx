@@ -10,6 +10,10 @@ import NotificationsIcon from '@mui/icons-material/Notifications'
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
 import { useHistory, Redirect, Link } from "react-router-dom"
 import { AnyAction } from 'redux'
+import { useSelector,useDispatch } from 'react-redux'
+import { RootState } from 'renderer/redux/reducers'
+
+
 
 const ListItems = withStyles({
   root: {
@@ -101,11 +105,11 @@ const pages = [
     name: 'Orders',
     link: 'orders'
   },
-  {
-    id: 6,
-    name: 'Raffles',
-    link: 'raffles'
-  }
+  // {
+  //   id: 6,
+  //   name: 'Raffles',
+  //   link: 'raffles'
+  // }
 ];
 
 const settings = [
@@ -123,7 +127,7 @@ const settings = [
   },
   {
     id: 3,
-    name: 'Jesse',
+    name: sessionStorage.getItem("name"),
     icon: <AccountCircleOutlinedIcon />,
     link: 'settings'
   },
@@ -143,12 +147,19 @@ const settings = [
 ]
 
 const HeaderComponent = () => {
+ 
+
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null)
   const [selectedIndex, setSelectedIndex] = useState('')
   const [openOption, setOpenOption] = useState({id :0,active:false})
 
   let history = useHistory()
+  const dispatch = useDispatch()
+
+  
+
+
 
   const handleSelectedItem = (index: number, link: any) => {
     setSelectedIndex(link)

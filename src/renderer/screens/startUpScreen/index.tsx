@@ -42,7 +42,7 @@ const StartScreen = () => {
     <Box display={'flex'} justifyContent={'flex-start'} flexDirection={'column'} sx={{ maxWidth: '100vw', height: 'calc(100vh - 128px)', color: 'secondary.main', backgroundImage: `url(${BackgroundImage})`, padding: '20px 20px' }}>
      <Box  display={'flex'} >
      <Box display={'flex'} sx={{width:"50%"}} justifyContent={'flex-start'} >
-     <Typography sx={{fontSize:"70px"}} >Hi</Typography>
+     <Typography sx={{fontSize:"70px"}} >Hi</Typography> 
       </Box>
       <Box display={'flex'} sx={{width:"50%"}} justifyContent={'flex-end'} flexDirection={'row'}>
         <img src={Logo}  />

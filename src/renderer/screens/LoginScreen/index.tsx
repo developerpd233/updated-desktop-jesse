@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import { Box, Paper, Grid, Typography, InputAdornment, FormControlLabel } from '@mui/material';
 import BackgroundImage from '../../assets/bg.png'
 import Logo from '../../assets/logo.png'
@@ -27,9 +27,10 @@ const LoginScreen = () => {
     const dispatch = useDispatch()
 
     const { loginReducer } = useSelector((state: RootState) => {
-        return state
+         return state
+  
+        
     })
-
     const onSubmit = async() => {
       let data = {
         email: email,
@@ -37,7 +38,9 @@ const LoginScreen = () => {
       }
       let result: any = await dispatch(userLogin(data))
       if (result.type === 'LOGIN_SUCCESS') {
-        sessionStorage.setItem('token', result.response.data.data.token)
+        sessionStorage.setItem('token', result.response.data.data.token);
+        sessionStorage.setItem("name",result.response.data.data.name);
+     
         history.push("/startUpScreen")
       }
       else if (result.type === 'LOGIN_ERROR') {
