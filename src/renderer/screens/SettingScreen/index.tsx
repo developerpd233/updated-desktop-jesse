@@ -164,7 +164,10 @@ if(validEmail(e.target.value))
           zip:result.response.data.data.zip
         }
         setValues(data);
+
+        
     }
+
     else if (result.type === 'SETTING_LIST_ERROR') {
       // if (typeof (result.response) === 'string')
       //     setEmpty(result.response)

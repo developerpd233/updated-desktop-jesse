@@ -17,7 +17,7 @@ const OrderScreen = lazy(() => import('../screens/OrderScreen'))
 const SettingScreen = lazy(() => import('../screens/SettingScreen'))
 const  StartScreen  = lazy(() => import('../screens/startUpScreen/index'))
 const MainApp = lazy(() => import("../container/App/MainApp"))
-
+const Raffal = lazy(() => import('../screens/raffel/index'))
 interface MyState {
     token: any; // like this
 };
@@ -65,6 +65,7 @@ class Routes extends React.Component<myProps, MyState> {
                               <Route exact path='/profile' component={()=> (<AppStructure><ProfileScreen /></AppStructure>)} />
                               <Route exact path='/new-profile' component={()=> (<AppStructure><NewProfileScreen /></AppStructure>)} />
                               <Route exact path='/orders' component={()=> (<AppStructure><OrderScreen /></AppStructure>)} />
+                              <Route exact path ="/raffel"component={()=> (<AppStructure>< Raffal/></AppStructure>)} />
                               {/* <Route exact path='/raffles' component={()=> (<AppStructure><ProfileScreen /></AppStructure>)} /> */}
                               <Route exact path='/new-task/:id' component={()=> (<AppStructure><NewTaskScreen /></AppStructure>)} />
                               <Route exact path='/new-profile/:id' component={()=> (<AppStructure><NewProfileScreen /></AppStructure>)} />

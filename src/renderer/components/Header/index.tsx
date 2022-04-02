@@ -105,11 +105,11 @@ const pages = [
     name: 'Orders',
     link: 'orders'
   },
-  // {
-  //   id: 6,
-  //   name: 'Raffles',
-  //   link: 'raffles'
-  // }
+  {
+    id: 6,
+    name: 'Raffal',
+    link: 'raffel'
+  }
 ];
 
 const settings = [
@@ -147,6 +147,7 @@ const settings = [
 ]
 
 const HeaderComponent = () => {
+ 
  
 
 

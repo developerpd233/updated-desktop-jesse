@@ -16,10 +16,10 @@ import Notifications from '../../components/Notifications'
 import ConfirmDialog from '../../components/ConfirmDialogbox'
 import Logo from '../../assets/logo.png'
 
-const StartScreen = () => {
+const Raffal = () => {
   // const [rows, setRows] = useState<TaskTableData[]>([])
-  const [notify, setNotify] = useState({ isOpen: false, message: '', type: '' })
-  const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, title: '', subTitle: '', onConfirm: () => { } })
+  // const [notify, setNotify] = useState({ isOpen: false, message: '', type: '' })
+  // const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, title: '', subTitle: '', onConfirm: () => { } })
 
   // let history = useHistory()
   // const dispatch = useDispatch()
@@ -39,29 +39,10 @@ const StartScreen = () => {
   // }
 
   return (
-    <Box display={'flex'} justifyContent={'flex-start'} flexDirection={'column'} sx={{ maxWidth: '100vw', height: 'calc(100vh - 128px)', color: 'secondary.main', backgroundImage: `url(${BackgroundImage})`, padding: '20px 20px' }}>
-     <Box  display={'flex'} >
-     <Box display={'flex'} sx={{width:"50%"}} justifyContent={'flex-start'} >
-     <Typography sx={{fontSize:"70px"}} >Hi {sessionStorage.getItem("name")}</Typography> 
-      </Box>
-      <Box display={'flex'} sx={{width:"50%"}} justifyContent={'flex-end'} flexDirection={'row'}>
-        <img src={Logo}  />
-      </Box>
-    
-     </Box>
-     <Box sx={{ display: 'flex', flexDirection:"column", justifyContent: 'center', alignItems: 'center', marginTop: 10 }}>
-        <Button sx={{backgroundColor:"#d4763d",fontWeight:900,borderRadius:"10px",padding:"13px 40px 13px 40px",margin:"0 0 37px 0",'&:hover': {
-      background: "#d4763d",
-    }}} >start All task</Button>
-        <Button sx={{backgroundColor:"#d4763d",fontWeight:900,borderRadius:"10px",padding:"13px 40px 13px 40px",'&:hover': {
-      background: "#d4763d",
-    }}} >Stop All task</Button>
-      </Box>
-
-      <Notifications notify={notify} setNotify={setNotify} />
-      <ConfirmDialog confirmDialog={confirmDialog} setConfirmDialog={setConfirmDialog} />
+    <Box display={'flex'} justifyContent={'center'} alignitem={'center'}  sx={{ maxWidth: '100vw', height: 'calc(100vh - 128px)', color: 'secondary.main', backgroundImage: `url(${BackgroundImage})`, padding: '20px 20px' }}>
+   <Typography sx={{marginTop:"171px",fontSize:"70px"}}>coming soon</Typography>
     </Box>
   )
 }
 
-export default StartScreen;
+export default Raffal;
