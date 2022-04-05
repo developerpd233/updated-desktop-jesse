@@ -84,7 +84,7 @@ const LoginScreen = () => {
                         <div />
                         <Box display={'flex'} justifyContent={'space-between'} width={'100%'}>
                             <CssGradientButton type="submit" onClick={onSubmit}>Login</CssGradientButton>
-                            <CssTransparentButton onClick={() => history.push(`/forgot`)}>Forgot Your Password?</CssTransparentButton>
+                            <CssTransparentButton style={{color:"white"}} onClick={() => history.push(`/forgot`)}>Forgot Your Password?</CssTransparentButton>
                         </Box>
                     </Box>
                 </Paper>

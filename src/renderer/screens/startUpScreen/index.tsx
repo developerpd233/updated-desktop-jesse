@@ -20,7 +20,10 @@ const StartScreen = () => {
   // const [rows, setRows] = useState<TaskTableData[]>([])
   const [notify, setNotify] = useState({ isOpen: false, message: '', type: '' })
   const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, title: '', subTitle: '', onConfirm: () => { } })
-
+  const [but, setbut]=useState(true)
+  const handleClick=()=>{
+    setbut(!but)
+  }
   // let history = useHistory()
   // const dispatch = useDispatch()
   // const { getAllTaskReducer } = useSelector((state: RootState) => {
@@ -50,12 +53,12 @@ const StartScreen = () => {
     
      </Box>
      <Box sx={{ display: 'flex', flexDirection:"column", justifyContent: 'center', alignItems: 'center', marginTop: 10 }}>
-        <Button sx={{backgroundColor:"#d4763d",fontWeight:900,borderRadius:"10px",padding:"13px 40px 13px 40px",margin:"0 0 37px 0",'&:hover': {
+    {but? <Button onClick={handleClick} sx={{backgroundColor:"#d4763d",fontWeight:900,borderRadius:"10px",padding:"13px 40px 13px 40px",margin:"0 0 37px 0",'&:hover': {
       background: "#d4763d",
-    }}} >start All task</Button>
-        <Button sx={{backgroundColor:"#d4763d",fontWeight:900,borderRadius:"10px",padding:"13px 40px 13px 40px",'&:hover': {
+    }}} >start All task</Button> :  <Button onClick={handleClick} sx={{backgroundColor:"#d4763d",fontWeight:900,borderRadius:"10px",padding:"13px 40px 13px 40px",'&:hover': {
       background: "#d4763d",
-    }}} >Stop All task</Button>
+    }}} >Stop All task</Button>}   
+      
       </Box>
 
       <Notifications notify={notify} setNotify={setNotify} />

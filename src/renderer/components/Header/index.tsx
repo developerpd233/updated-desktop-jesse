@@ -12,7 +12,7 @@ import { useHistory, Redirect, Link } from "react-router-dom"
 import { AnyAction } from 'redux'
 import { useSelector,useDispatch } from 'react-redux'
 import { RootState } from 'renderer/redux/reducers'
-
+import { app, BrowserWindow, shell, ipcMain } from 'electron';
 
 
 const ListItems = withStyles({
@@ -141,7 +141,7 @@ const settings = [
   {
     id: 5,
     name: '',
-    icon: <CloseIcon />,
+    icon: <CloseIcon onClick={()=>{ }} />,
     link: ''
   }
 ]
@@ -150,7 +150,7 @@ const HeaderComponent = () => {
  
  
 
-
+ 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null)
   const [selectedIndex, setSelectedIndex] = useState('')
   const [openOption, setOpenOption] = useState({id :0,active:false})
@@ -175,16 +175,18 @@ const HeaderComponent = () => {
   }
   function handleSubMenu(sid: number) {
     switch (sid) {
-      case 1:
+      case 3:
         setOpenOption({id:1,active:!openOption.active});
       
         break;
       case 2:
         setOpenOption({id:2,active:!openOption.active});
         break;
+        
+      
       default:
         setOpenOption({id:0,active:!openOption.active})
-        break
+        break;
     }
   }
 
@@ -252,8 +254,8 @@ const HeaderComponent = () => {
           </List>
         
         </Box>
-          {openOption.id == 1 & openOption.active == true? <Box sx={{ position:"absolute",width:"100px !important",height:"50px !important",backgroundColor: "#d4753c !important",top: "105% !important",right: "19% !important",borderBottomLeftRadius: "17px !important",display:"flex !important",justifyContent:"center !important",alignItems:"center !important",color:"#fff !important"}}><Link  style={{cursor: 'pointer !important',color:"#fff",textDecoration:"none",fontSize:"20px"}} to="">Logo</Link></Box>:null}
-          {openOption.id == 2 & openOption.active == true? <Box sx={{ position:"absolute",width:"100px !important",height:"50px !important",backgroundColor: "#d4753c !important",top: "105% !important",right: "19% !important",borderBottomLeftRadius: "17px !important",display:"flex !important",justifyContent:"center !important",alignItems:"center !important",color:"#fff !important"}}>me hu gunti</Box>:null}
+          {openOption.id == 1 & openOption.active == true? <Box sx={{ position:"absolute",width:"100px !important",height:"50px !important",backgroundColor: "#d4753c !important",top: "105% !important",right: "9% !important",borderBottomLeftRadius: "17px !important",display:"flex !important",justifyContent:"center !important",alignItems:"center !important",color:"#fff !important",zIndex:1}}><Link  style={{cursor: 'pointer !important',color:"#fff",textDecoration:"none",fontSize:"20px"}} to="">Logo</Link></Box>:null}
+          {openOption.id == 2 & openOption.active == true? <Box sx={{ position:"absolute",width:"100px !important",height:"50px !important",backgroundColor: "#d4753c !important",top: "105% !important",right: "9% !important",borderBottomLeftRadius: "17px !important",display:"flex !important",justifyContent:"center !important",alignItems:"center !important",color:"#fff !important"}}>me hu gunti</Box>:null}
       </Toolbar>
     </AppBar>
   )
