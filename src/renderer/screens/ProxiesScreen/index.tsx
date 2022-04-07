@@ -26,6 +26,7 @@ const ProxiesScreen = () => {
   const { getAllProxyReducer } = useSelector((state: RootState) => {
     return state
   })
+ 
 
   const createData = (id: number, proxy: any, name: string, status: any, action: any): ProxiesTableData  => {
     return { id,  proxy, name, status, action };

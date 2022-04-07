@@ -122,10 +122,10 @@ export const useStyles = makeStyles({
     justifyContent: 'center'
   },
   titleIcon: {
-    backgroundColor: '#F85160',
+    background:"linear-gradient(to right, #DA792D, #AC609E)",
     color: theme.palette.secondary.main,
     '&:hover': {
-      backgroundColor: '#F85160',
+      background:"linear-gradient(to right, #DA792D, #AC609E)",
       cursor: 'default',
     },
     '& .MuiSvgIcon-root': {

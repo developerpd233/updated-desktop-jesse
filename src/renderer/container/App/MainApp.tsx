@@ -9,7 +9,7 @@ const MainApp: React.FC = () => {
         <Fragment>
             <Header/>
             <App />
-            <Footer />
+            {/* <Footer /> */}
         </Fragment>
     );
 }

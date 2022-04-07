@@ -40,7 +40,7 @@ const SettingScreen = () => {
     return state
   })
 
-  console.log('getProfileSettingReducer', getProfileSettingReducer)
+  console.log('getProfileSettingReducer ===>', getProfileSettingReducer)
   
   const handleName = (e: any) => {
     setValues({ ...values, name: e.target.value })

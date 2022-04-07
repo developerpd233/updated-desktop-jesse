@@ -3,6 +3,7 @@ import {  Route, Switch } from "react-router-dom";
 import asyncComponent from "../../../utils/asyncComponent";
 import { useHistory } from "react-router-dom";
 
+
 const App: React.FC = () => {
     const history = useHistory();
     useEffect(() => {

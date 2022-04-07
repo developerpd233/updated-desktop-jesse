@@ -127,9 +127,9 @@ const settings = [
   },
   {
     id: 3,
-    name: sessionStorage.getItem("name"),
+    // name: sessionStorage.getItem("name"),
     icon: <AccountCircleOutlinedIcon />,
-    link: 'settings'
+    link: 'settingsss'
   },
  
   {
@@ -141,7 +141,7 @@ const settings = [
   {
     id: 5,
     name: '',
-    icon: <CloseIcon onClick={()=>{ }} />,
+    icon: <CloseIcon  />,
     link: ''
   }
 ]
@@ -208,7 +208,7 @@ const HeaderComponent = () => {
   }, [selectedIndex])
 
   return (
-    <AppBar position="static" style={{ maxHeight: 80, height: 80, borderBottom: '2px solid gray' }}>
+    <AppBar position="static" style={{ maxHeight: 80, height: 80, borderBottom: '2px solid gray'}}>
       <Toolbar disableGutters>
         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, alignItems: 'center', justifyContent: 'space-between' }}>
           <img src={Logo} alt="Logo" width={50} height={50} style={{ marginLeft: 10 }} />
@@ -254,8 +254,8 @@ const HeaderComponent = () => {
           </List>
         
         </Box>
-          {openOption.id == 1 & openOption.active == true? <Box sx={{ position:"absolute",width:"100px !important",height:"50px !important",backgroundColor: "#d4753c !important",top: "105% !important",right: "9% !important",borderBottomLeftRadius: "17px !important",display:"flex !important",justifyContent:"center !important",alignItems:"center !important",color:"#fff !important",zIndex:1}}><Link  style={{cursor: 'pointer !important',color:"#fff",textDecoration:"none",fontSize:"20px"}} to="">Logo</Link></Box>:null}
-          {openOption.id == 2 & openOption.active == true? <Box sx={{ position:"absolute",width:"100px !important",height:"50px !important",backgroundColor: "#d4753c !important",top: "105% !important",right: "9% !important",borderBottomLeftRadius: "17px !important",display:"flex !important",justifyContent:"center !important",alignItems:"center !important",color:"#fff !important"}}>me hu gunti</Box>:null}
+          {openOption.id == 1 & openOption.active == true? <Box sx={{ position:"absolute",width:"100px !important",height:"50px !important",backgroundColor: "#d4753c !important",top: "105% !important",right: "9% !important",display:"flex !important",justifyContent:"center !important",alignItems:"center !important",color:"#fff !important",zIndex:1}}><Box display={'flex'} flexDirection={'column'} justifyContent={'center'}><Link  style={{cursor: 'pointer !important',color:"#fff",textDecoration:"none",fontSize:"20px"}} to="/settings">profile</Link><Link  style={{cursor: 'pointer !important',color:"#fff",textDecoration:"none",fontSize:"20px"}} to="">Logo</Link></Box></Box>:null}
+          {openOption.id == 2 & openOption.active == true? <Box sx={{ position:"absolute",width:"100px !important",height:"50px !important",backgroundColor: "#d4753c !important",top: "105% !important",right: "17% !important",display:"flex !important",justifyContent:"center !important",alignItems:"center !important",color:"#fff !important",zIndex:1}}>Notifications</Box>:null}
       </Toolbar>
     </AppBar>
   )

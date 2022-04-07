@@ -1,5 +1,7 @@
 import {useEffect, useState} from 'react'
 import { Box, Paper, Grid, Typography, InputAdornment, FormControlLabel } from '@mui/material';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import BackgroundImage from '../../assets/bg.png'
 import Logo from '../../assets/logo.png'
 import { CssTextField } from '../../components/Textfield'
@@ -18,6 +20,7 @@ import ConfirmDialog from '../../components/ConfirmDialogbox'
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('')
+  const [showpass, setshowpass] = useState(true)
   const [password, setPassword] = useState('')
   const [notify, setNotify] = useState({isOpen: false, message:'', type:''})
   const [confirmDialog, setConfirmDialog] = useState({isOpen: false, title: '', subTitle: '', onConfirm: () => {}})
@@ -31,6 +34,9 @@ const LoginScreen = () => {
   
         
     })
+    const handler=()=>{
+      setshowpass(!showpass)
+    }
     const onSubmit = async() => {
       let data = {
         email: email,
@@ -70,7 +76,7 @@ const LoginScreen = () => {
     return (
       <>
       {/* { redirect ?   <Test /> : null } */}
-        <Box display={'flex'} justifyContent={'center'} alignItems={'center'} sx={{ maxWidth:'100vw',  height:'98vh', maxHeight:'100%', color: 'secondary.main', backgroundImage:`url(${BackgroundImage})`}}>
+        <Box display={'flex'} justifyContent={'center'} alignItems={'center'} sx={{ maxWidth:'100vw',  height:'100vh', maxHeight:'100%', color: 'secondary.main', backgroundImage:`url(${BackgroundImage})`}}>
             <Grid container item xs={12} sm={12} md={6} lg={6} alignItems="center" justifyContent="space-between" direction="column" sx={{filter:!loginReducer.loading ?  'blur(0px)' : 'blur(5px)'}}>
                 <Paper elevation={10} style={{minWidth: 500, backgroundColor:'#2121228f', paddingLeft: 20, paddingRight: 20,  paddingTop: 30, paddingBottom: 30, borderRadius: 5, display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
                     <img src={Logo} alt='' width={100} height={100} />
@@ -79,7 +85,7 @@ const LoginScreen = () => {
                         <div />
 
                         <CssTextField onChange={(e) => setEmail(e.target.value)} name="email" placeholder="Email" label="Email" variant="outlined" margin="normal" required fullWidth InputProps={{ startAdornment: <InputAdornment position="start"><Email /></InputAdornment>, style: {  color: 'white'} }} />
-                        <CssTextField onChange={(e) => setPassword(e.target.value)} name="password" placeholder="Password" label="Password" variant="outlined" margin="normal" required fullWidth type="password"  InputProps={{ startAdornment: <InputAdornment position="start"><Lock /></InputAdornment>, style: {  color: 'white'}     }} />
+                        <CssTextField onChange={(e) => setPassword(e.target.value)} name="password" placeholder="Password" label="Password" variant="outlined" margin="normal" required fullWidth type={showpass ?"password":"text"}  InputProps={{ startAdornment: <InputAdornment position="start"><Lock /></InputAdornment>, style: {  color: 'white',position:"relative"}     }} />{showpass?<VisibilityOffIcon onClick={handler}   style={{color: 'white',position:"relative",bottom:"49px",left:"450px",cursor:"pointer"}}/>:<VisibilityIcon onClick={handler}   style={{color: 'white',position:"relative",bottom:"49px",left:"450px",cursor:"pointer"}}/>}
                         <FormControlLabel control={<CssCheckboxField  name="Web"   color="secondary"  style={{color:'white'}} /> } label="Remember me"  style={{color:'white', marginBottom:10}}  />
                         <div />
                         <Box display={'flex'} justifyContent={'space-between'} width={'100%'}>

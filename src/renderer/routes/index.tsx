@@ -18,6 +18,7 @@ const SettingScreen = lazy(() => import('../screens/SettingScreen'))
 const  StartScreen  = lazy(() => import('../screens/startUpScreen/index'))
 const MainApp = lazy(() => import("../container/App/MainApp"))
 const Raffal = lazy(() => import('../screens/raffel/index'))
+
 interface MyState {
     token: any; // like this
 };
@@ -57,6 +58,7 @@ class Routes extends React.Component<myProps, MyState> {
                                   }
                                 }}
                               /> */}
+                               <Route exact path='/LoginScreen' component={()=> (<AppStructure><LoginScreen /></AppStructure>)} />
                               <Route exact path='/startUpScreen' component={()=> (<AppStructure><StartScreen /></AppStructure>)} />
                               <Route exact path='/task' component={()=> (<AppStructure><TaskScreen /></AppStructure>)} />
                               <Route exact path='/new-task' component={()=> (<AppStructure><NewTaskScreen /></AppStructure>)} />
