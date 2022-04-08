@@ -195,7 +195,7 @@ if(validEmail(e.target.value))
       <Loader type="Bars" color="#DA792D" height={80} width={80}  />
     </Box> 
     :
-    <Box  display={'flex'} justifyContent={'center'} alignItems={'center'} sx={{ maxWidth:'100vw',  height:'90vh', maxHeight:'100%', color: 'secondary.main',padding:"25px", backgroundImage:`url(${BackgroundImage})`,}}>
+    <Box  display={'flex'} justifyContent={'center'} alignItems={'center'} sx={{ maxWidth:'100vw',  height:'100vh', maxHeight:'100%', color: 'secondary.main',padding:"25px", backgroundImage:`url(${BackgroundImage})`,}}>
 
 <Box sx={{background:'rgba(235, 237, 239, 0.2)',padding:'25px 15px',borderRadius:'20px'}}>
   <Container>

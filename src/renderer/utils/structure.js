@@ -7,7 +7,7 @@ function Structure({children}) {
     <div>
       <Header />
         {children}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

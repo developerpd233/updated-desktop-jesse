@@ -42,7 +42,7 @@ const StartScreen = () => {
   // }
 
   return (
-    <Box display={'flex'} justifyContent={'flex-start'} flexDirection={'column'} sx={{ maxWidth: '100vw', height: 'calc(100vh - 128px)', color: 'secondary.main', backgroundImage: `url(${BackgroundImage})`, padding: '20px 20px' }}>
+    <Box display={'flex'} justifyContent={'flex-start'} flexDirection={'column'} sx={{ maxWidth: '100vw', height: '100vh', color: 'secondary.main', backgroundImage: `url(${BackgroundImage})`, padding: '20px 20px' }}>
      <Box  display={'flex'} >
      <Box display={'flex'} sx={{width:"50%"}} justifyContent={'flex-start'} >
      <Typography sx={{fontSize:"70px",textTransform:"capitalize"}} >Hi {sessionStorage.getItem("name")}</Typography> 
