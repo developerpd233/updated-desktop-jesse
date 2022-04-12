@@ -133,6 +133,12 @@ export interface TaskData {
   sizes: string
 }
 
+
+export interface EmailSend {
+  email: string,
+
+}
+
 export interface TaskTableData {
   id: number,
   storeName: string,

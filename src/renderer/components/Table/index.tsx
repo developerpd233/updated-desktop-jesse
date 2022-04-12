@@ -14,6 +14,7 @@ const TableComponent:React.FC<TableInterface> = ({columns, rows, loader}) => {
   }
 
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(+event.target.value,"jj")
     setRowsPerPage(+event.target.value)
     setPage(0)
   }

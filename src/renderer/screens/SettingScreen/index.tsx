@@ -10,7 +10,7 @@ import { stateList } from '../../constant/Dropdown/states';
 import { MenuItem } from '@mui/material';
 import { useStyles } from '../../constant/customStyles'
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-
+import { useHistory } from "react-router-dom"
 import { useState,useEffect} from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import {getProfileRecord,updateProfile} from '../../redux/actions/setting-action';
@@ -33,7 +33,7 @@ let errorObject: any = {}
 const SettingScreen = () => {
   const [flag, setFlag] = useState(false);
   const [values, setValues] = useState(initialState);
-
+ const history=useHistory();
   const classes = useStyles();
   const dispatch = useDispatch();
   const {getProfileSettingReducer} = useSelector((state: RootState) => {
@@ -107,7 +107,7 @@ if(validEmail(e.target.value))
       errorObject['zip'] = ''
     }
   }
-
+ 
 
   const onUpdate = async (e: any) => {
     e.preventDefault()
@@ -187,6 +187,9 @@ if(validEmail(e.target.value))
     // }
    // fetchMyAPI()
   }, [])
+  const handleToda=()=>{
+    history.push('/startUpScreen')
+  }
 
   return(
     <>
@@ -283,6 +286,9 @@ if(validEmail(e.target.value))
         <Grid item md={6} xs={12}>
           <Button variant="contained" sx={{borderRadius:30, textTransform:'capitalize', padding:'5px 30px', background:'linear-gradient(to right, #DA792D, #AC609E)'}} onClick={onUpdate}>
                       Update
+          </Button>
+          <Button onClick={handleToda} variant="contained" sx={{borderRadius:30, textTransform:'capitalize', padding:'5px 30px', background:'linear-gradient(to right, #DA792D, #AC609E)',margin:"0 0 0 9px"}}>
+                      cancel
           </Button>
         </Grid>
       

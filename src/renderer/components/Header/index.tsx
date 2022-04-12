@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Box, List, ListItem, ListItemText, Menu, MenuItem, AppBar, Toolbar, Typography, IconButton } from '@mui/material'
+import { Tooltip, Box, List, ListItem, ListItemText, Menu, MenuItem, AppBar, Toolbar, Typography, IconButton } from '@mui/material'
 import Logo from '../../assets/logo.png'
 import { withStyles } from '@mui/styles'
 import MenuIcon from '@mui/icons-material/Menu'
@@ -10,7 +10,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications'
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
 import { useHistory, Redirect, Link } from "react-router-dom"
 import { AnyAction } from 'redux'
-import { useSelector,useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from 'renderer/redux/reducers'
 import { app, BrowserWindow, shell, ipcMain } from 'electron';
 
@@ -113,12 +113,12 @@ const pages = [
 ];
 
 const settings = [
-  {
-    id: 1,
-    name: '',
-    icon: <SettingsIcon />,
-    link: ''
-  },
+  // {
+  //   id: 1,
+  //   name: '',
+  //   icon: <SettingsIcon />,
+  //   link: ''
+  // },
   {
     id: 2,
     name: '',
@@ -131,7 +131,7 @@ const settings = [
     icon: <AccountCircleOutlinedIcon />,
     link: 'settingsss'
   },
- 
+
   {
     id: 4,
     name: '',
@@ -141,24 +141,24 @@ const settings = [
   {
     id: 5,
     name: '',
-    icon: <CloseIcon  />,
+    icon: <CloseIcon />,
     link: ''
   }
 ]
 
 const HeaderComponent = () => {
- 
- 
 
- 
+
+
+
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null)
   const [selectedIndex, setSelectedIndex] = useState('')
-  const [openOption, setOpenOption] = useState({id :0,active:false})
+  const [openOption, setOpenOption] = useState({ id: 0, active: false })
 
   let history = useHistory()
   const dispatch = useDispatch()
 
-  
+
 
 
 
@@ -176,16 +176,16 @@ const HeaderComponent = () => {
   function handleSubMenu(sid: number) {
     switch (sid) {
       case 3:
-        setOpenOption({id:1,active:!openOption.active});
-      
+        setOpenOption({ id: 1, active: !openOption.active });
+
         break;
       case 2:
-        setOpenOption({id:2,active:!openOption.active});
+        setOpenOption({ id: 2, active: !openOption.active });
         break;
-        
-      
+
+
       default:
-        setOpenOption({id:0,active:!openOption.active})
+        setOpenOption({ id: 0, active: !openOption.active })
         break;
     }
   }
@@ -208,7 +208,7 @@ const HeaderComponent = () => {
   }, [selectedIndex])
 
   return (
-    <AppBar position="static" style={{ maxHeight: 80, height: 80, borderBottom: '2px solid gray'}}>
+    <AppBar position="static" style={{ maxHeight: 80, height: 80, borderBottom: '2px solid gray' }}>
       <Toolbar disableGutters>
         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, alignItems: 'center', justifyContent: 'space-between' }}>
           <img src={Logo} alt="Logo" width={50} height={50} style={{ marginLeft: 10 }} />
@@ -250,12 +250,12 @@ const HeaderComponent = () => {
                 {page.name !== '' ? <Link style={{ color: 'white', textDecoration: 'none' }} to={`/${page.link}`}><ListItemText >{page.name}</ListItemText></Link> : null}
               </ListItem>
             ))}
-           
+
           </List>
-        
+
         </Box>
-          {openOption.id == 1 & openOption.active == true? <Box sx={{ position:"absolute",width:"100px !important",height:"50px !important",backgroundColor: "#d4753c !important",top: "105% !important",right: "9% !important",display:"flex !important",justifyContent:"center !important",alignItems:"center !important",color:"#fff !important",zIndex:1 ,textTransform:"capitalize"}}><Box display={'flex'} flexDirection={'column'} justifyContent={'center'}><Link  style={{cursor: 'pointer !important',color:"#fff",textDecoration:"none",fontSize:"20px"}} to="/settings">profile</Link><Link  style={{cursor: 'pointer !important',color:"#fff",textDecoration:"none",fontSize:"20px"}} to="">Logo</Link></Box></Box>:null}
-          {openOption.id == 2 & openOption.active == true? <Box sx={{ position:"absolute",width:"100px !important",height:"50px !important",backgroundColor: "#d4753c !important",top: "105% !important",right: "17% !important",display:"flex !important",justifyContent:"center !important",alignItems:"center !important",color:"#fff !important",zIndex:1}}>Notifications</Box>:null}
+        {openOption.id == 1 && openOption.active == true ? <Box sx={{ padding: "13px 3px 13px 3px", position: "absolute", width: "100px !important", height: "50px !important", backgroundColor: "#d4753c !important", top: "105% !important", right: "9% !important", display: "flex !important", justifyContent: "center !important", alignItems: "center !important", color: "#fff !important", zIndex: 1, textTransform: "capitalize" }}><Box display={'flex'} flexDirection={'column'} justifyContent={'center'}><Link style={{cursor: 'pointer !important', color: "#fff", textDecoration: "revert", fontSize: "20px", padding: "0 0 8px 0",fontWeight:800,}} to="/settings">profile</Link><Link style={{ cursor: 'pointer !important', color: "#fff", textDecoration: "revert", fontSize: "20px", padding: "0 0 8px 0",fontWeight:800, }} to="">Logout</Link></Box></Box> : null}
+         {openOption.id == 2 && openOption.active == true ? <Box sx={{ padding: "13px 3px 13px 3px", position: "absolute", width: "100px !important", height: "50px !important", backgroundColor: "#d4753c !important", top: "105% !important", right: "9% !important", display: "flex !important", justifyContent: "center !important", alignItems: "center !important", color: "#fff !important", zIndex: 1, textTransform: "capitalize" }}><Box display={'flex'} flexDirection={'column'} justifyContent={'center'}><Link style={{cursor: 'pointer !important', color: "#fff", textDecoration: "revert", fontSize: "20px", padding: "0 0 8px 0",fontWeight:800, }} >Notification</Link></Box></Box> : null}
       </Toolbar>
     </AppBar>
   )

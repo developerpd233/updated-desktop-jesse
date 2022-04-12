@@ -268,6 +268,9 @@ const BillingInfoComponent: React.FC<BillingInfo> = ({id}) => {
       }
     }
   }
+ const handleTo=()=>{
+   history.push('/startUpScreen')
+ }
 
   const onSubmit = async (e:any) => {
     e.preventDefault()
@@ -568,15 +571,16 @@ const BillingInfoComponent: React.FC<BillingInfo> = ({id}) => {
       </Grid>
       <Grid container columnSpacing={1} sx={{marginTop:2, marginBottom:2}} display={'flex'} justifyContent={'center'} alignItems={'center'}>
         <Stack direction="row" spacing={2}>
-          <Button variant="contained" sx={{borderRadius:30, textTransform:'capitalize', padding:'5px 30px', background:'transparent', border:'1px solid #DA792D'}}>
+          <Button  variant="contained" sx={{borderRadius:30, textTransform:'capitalize', padding:'5px 30px', background:'transparent', border:'1px solid #DA792D'}}>
             Save & Start
           </Button>
-          <Button variant="contained" sx={{borderRadius:30, textTransform:'capitalize', padding:'5px 30px', background:'transparent', border:'1px solid #DA792D'}}>
+          <Button onClick={handleTo} variant="contained" sx={{borderRadius:30, textTransform:'capitalize', padding:'5px 30px', background:'transparent', border:'1px solid #DA792D'}}>
             Cancel
           </Button>
           <Button variant="contained" sx={{borderRadius:30, textTransform:'capitalize', padding:'5px 30px', background:'linear-gradient(to right, #DA792D, #AC609E)',}} onClick={!!id ? onUpdate : onSubmit }>
               Save
           </Button>
+          
         </Stack>
       </Grid>
       </> }

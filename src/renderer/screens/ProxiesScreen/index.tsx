@@ -103,7 +103,7 @@ const ProxiesScreen = () => {
   }
 
   return (
-    <Box sx={{ maxWidth:'100vw',  height:'calc(100vh - 160px)', maxHeight:'80%', color: 'secondary.main', backgroundImage:`url(${BackgroundImage})`, padding:'20px 20px' }}>
+    <Box sx={{ maxWidth:'100vw',  height:'100vh', maxHeight:'80%', color: 'secondary.main', backgroundImage:`url(${BackgroundImage})`, padding:'20px 20px' }}>
       <Box display={'flex'} justifyContent={'flex-end'} flexDirection={'row'}>
         <Grid container item xs={12} sm={12} md={12} lg={12} alignItems="center" justifyContent="flex-end" direction="row" sx={{}}>
           <Box sx={{marginBottom:5}}>

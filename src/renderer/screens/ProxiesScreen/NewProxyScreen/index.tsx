@@ -132,7 +132,9 @@ const NewProxyScreen= ()=> {
       fetchData()
     }
   }, [])
-
+  const handleToda=()=>{
+    history.push('/startUpScreen')
+  }
 
   return (
     <Box sx={{ display:'flex', alignItems:'center', maxWidth:'100vw',  height:'calc(100vh - 160px)', maxHeight:'80%', color: 'secondary.main', backgroundImage:`url(${BackgroundImage})`, padding:'20px 20px' }}>
@@ -168,6 +170,10 @@ const NewProxyScreen= ()=> {
               <Grid item xs={12} sm={12} lg={12} md={12} display={'flex'} justifyContent={'flex-end'}>
                 <Button onClick={!!sessionStorage.getItem('proxyId') ? onUpdate : onSubmit} variant="contained" sx={{borderRadius:30, textTransform:'capitalize', padding:'5px 50px', background:'linear-gradient(to right, #DA792D, #AC609E)',}}>
                   Save
+                </Button>
+                
+                <Button onClick={handleToda} variant="contained" sx={{margin:" 0 0 0 10px",borderRadius:30, textTransform:'capitalize', padding:'5px 50px', background:'linear-gradient(to right, #DA792D, #AC609E)',}}>
+                  cancel
                 </Button>
               </Grid>
             </Grid>

@@ -213,6 +213,9 @@ const NewProfileScreen= ()=> {
       }
     }
   }
+  const handleToda=()=>{
+    history.push('/startUpScreen')
+  }
 
   const fetchData = async () => {
     let result: any = await dispatch(getProfileRecord(sessionStorage.getItem('profileId')))
@@ -384,6 +387,9 @@ const NewProfileScreen= ()=> {
       <Grid container columnSpacing={1} sx={{marginTop:2, marginBottom:2}} display={'flex'} justifyContent={'center'} alignItems={'center'}>
         <Button onClick={!!sessionStorage.getItem('profileId') ? onUpdate : onSubmit} variant="contained" sx={{borderRadius:30, textTransform:'capitalize', padding:'5px 50px', background:'linear-gradient(to right, #DA792D, #AC609E)',}}>
           Save
+        </Button>
+        <Button onClick={handleToda}   variant="contained" sx={{margin: "0 0 0 11px",borderRadius:30, textTransform:'capitalize', padding:'5px 50px', background:'linear-gradient(to right, #DA792D, #AC609E)',}}>
+         Cancel
         </Button>
       </Grid>
       <Notifications notify={notify} setNotify={setNotify } />

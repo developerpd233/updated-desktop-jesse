@@ -1,10 +1,75 @@
 import {TASK_LIST_LOADING, TASK_LIST_SUCCESS, TASK_LIST_ERROR, TASK_CREATE_REQUEST, TASK_CREATE_SUCCESS, TASK_CREATE_ERROR,
 TASK_UPDATE_REQUEST, TASK_UPDATE_SUCCESS, TASK_UPDATE_ERROR , TASK_DELETE_REQUEST, TASK_DELETE_SUCCESS, TASK_DELETE_ERROR} from '../../constant/ActionTypes/TaskType'
 import { Dispatch } from 'redux'
-import {TaskData} from '../../constant/Interface'
+import {TaskData, EmailSend} from '../../constant/Interface'
 import { baseURL } from '../../constant/url'
 
 const axios = require("axios")
+
+
+export const tasksallexistsuser   = () => (dispatch: Dispatch): any => {
+  console.log('token 11', sessionStorage.getItem('token'))
+  dispatch({ type: TASK_LIST_LOADING });
+  return axios({
+    method: "GET",
+    url: `${baseURL}tasksallexistsuser`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${sessionStorage.getItem('token')}`
+    },
+    // params: {
+    //     ...(skip || skip === 0 ? { skip: skip } : {}),
+    //     ...(page ? { page: page } : {}),
+    //     ...(search ? { search: search } : {})
+    // }
+  }).then((response: any) => {
+    // setCookie(response)
+    return dispatch({ type: TASK_LIST_SUCCESS, response: response });
+  }).catch((error: any) => {
+    if (error.message === "Network Error") {
+        return dispatch({ type: TASK_LIST_ERROR, response: error.message });
+    }
+    if (error.response.status === 401) {
+        // logout(error.response.data.mesg)
+    }
+    return dispatch({ type: TASK_LIST_ERROR, response: error.response });
+  });
+}
+
+export const Forgettask = (obj: EmailSend)  => (dispatch: Dispatch): any => {
+  console.log('token 11', sessionStorage.getItem('token'))
+  dispatch({ type: TASK_LIST_LOADING });
+  return axios({
+    method: "post",
+    url: `${baseURL}forgotpassword'`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": " application/x-www-form-urlencoded",
+      Authorization: `Bearer ${sessionStorage.getItem('token')}`
+    },
+    // params: {
+    //     ...(skip || skip === 0 ? { skip: skip } : {}),
+    //     ...(page ? { page: page } : {}),
+    //     ...(search ? { search: search } : {})
+    // }
+  }).then((response: any) => {
+    // setCookie(response)
+    return dispatch({ type: TASK_LIST_SUCCESS, response: response });
+  }).catch((error: any) => {
+    if (error.message === "Network Error") {
+        return dispatch({ type: TASK_LIST_ERROR, response: error.message });
+    }
+    if (error.response.status === 401) {
+        // logout(error.response.data.mesg)
+    }
+    return dispatch({ type: TASK_LIST_ERROR, response: error.response });
+  });
+}
+
+
+
+
 
 
 export const taskList = () => (dispatch: Dispatch): any => {
@@ -36,6 +101,12 @@ export const taskList = () => (dispatch: Dispatch): any => {
     return dispatch({ type: TASK_LIST_ERROR, response: error.response });
   });
 }
+
+
+
+
+
+
 
 export const createNewTask = (obj: TaskData) => (dispatch: Dispatch): any => {
   dispatch({ type: TASK_CREATE_REQUEST });

@@ -11,14 +11,13 @@ import { useDispatch, useSelector } from "react-redux"
 import { taskList, deleteTask } from '../../redux/actions/task-action'
 import { useState, useEffect } from 'react'
 import { RootState } from 'renderer/redux/reducers'
-import Loader from "react-loader-spinner"
 import Notifications from '../../components/Notifications'
 import ConfirmDialog from '../../components/ConfirmDialogbox'
-import { CSVLink } from "react-csv";
 
 
 const TaskScreen = () => {
-  const [rows, setRows] = useState<TaskTableData[]>([])
+ 
+   const [rows, setRows] = useState<TaskTableData[]>([])
   const [notify, setNotify] = useState({isOpen: false, message:'', type:''})
   const [confirmDialog, setConfirmDialog] = useState({isOpen: false, title: '', subTitle: '', onConfirm: () => {}})
 const[file,setfile]=useState()
@@ -95,6 +94,7 @@ const[file,setfile]=useState()
 
   useEffect(() => {
     fetchMyAPI()
+    
   }, [])
 
   const createData = (id: number, storeName: string, productName: string, dateTime: any, quantity: number, profileName: string, proxy: string, status: string, action: any): TaskTableData => {
@@ -146,19 +146,18 @@ const csvReport = {
   filename: 'Clue_Mediator_Report.csv'
 };
 
-console.log(headers , 'headers');
 
   return (
     <Box display={'flex'} justifyContent={'flex-start'} flexDirection={'column'} sx={{ maxWidth:'100vw',  height:'100vh', color: 'secondary.main', backgroundImage:`url(${BackgroundImage})`, padding:'20px 20px' }}>
       <Box display={'flex'} justifyContent={'flex-end'} flexDirection={'row'}>
         <Grid container item xs={12} sm={12} md={12} lg={12} alignItems="center" justifyContent="flex-end" direction="row" sx={{}}>
-          <Box sx={{marginRight:2}}>
+          {/* <Box sx={{marginRight:2}}>
           <CssGradientButton variant="contained" component="label"> <CSVLink  {...csvReport}>Export</CSVLink> </CssGradientButton>
  
-          </Box>
-          <Box sx={{marginRight:2}}>
+          </Box> */}
+          {/* <Box sx={{marginRight:2}}>
             <CssGradientButton variant="contained" component="label"> <input type="file" hidden accept='.csv' onChange={(e)=>handlercsve(e.target.files)} />Import</CssGradientButton>
-          </Box>
+          </Box> */}
           <Box>
             <CssGradientButton type="submit" onClick={createNewTask}>New Task</CssGradientButton>
           </Box>
