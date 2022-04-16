@@ -32,8 +32,13 @@ export interface ConfirmDialogInterface {
   setConfirmDialog?: any,
 }
 
+export interface ConfirmDialogOrderInterface {
+  confirmDialog?: Object,
+  setConfirmDialog?: any,
+}
+
 export interface ProfileColumns {
-  id: 'name' | 'email' |  'creditCard' | 'expire' | 'action',
+  id: 'name' | 'email' | 'creditCard' | 'expire' | 'action',
   label: string,
   minWidth?: number,
   align?: 'right',
@@ -45,7 +50,7 @@ export interface ProfileData {
   nick_name: string,
   name: string,
   lastname: string,
-  email:string,
+  email: string,
   address: string,
   address_2: string,
   country: string,
@@ -69,7 +74,7 @@ export interface ProfileTableData {
 }
 
 export interface OrderColumns {
-  id: 'image' | 'name' | 'description' | 'price' |  'quantity' | 'action',
+  id: 'image' | 'name' | 'description' | 'price' | 'quantity' | 'action',
   label: string,
   minWidth?: number,
   align?: 'right',
@@ -96,9 +101,9 @@ export interface ProxiesColumns {
 }
 
 export interface ProxyData {
-   name: any,
-   proxy: any,
-   status: any
+  name: any,
+  proxy: any,
+  status: any
 }
 
 export interface ProxiesTableData {
@@ -113,7 +118,7 @@ export interface TaskData {
   store_id: number,
   site: string,
   product: string,
-  product_name:string,
+  product_name: string,
   quantity: string,
   status: string,
   profile_id: number,
@@ -148,11 +153,13 @@ export interface TaskTableData {
   profileName: string,
   proxy: string,
   status: string,
+  taskStatus:string,
+  processingStatus: string,
   action: any
 }
 
 export interface TaskColumns {
-  id: 'storeName' | 'productName' | 'dateTime' | 'quantity' | 'profileName' | 'proxy' | 'status' | 'action'
+  id: 'storeName' | 'productName' | 'dateTime' | 'quantity' | 'profileName' | 'proxy'  | 'status' |'taskStatus'| 'processingStatus' | 'action' 
   label: string,
   minWidth?: number,
   align?: 'right',
@@ -160,9 +167,9 @@ export interface TaskColumns {
   format?: (value: number) => string,
 }
 export interface SettingeData {
- 
+
   name: string,
-  email:string,
+  email: string,
   country: string,
   state: string,
   phone_number: string,

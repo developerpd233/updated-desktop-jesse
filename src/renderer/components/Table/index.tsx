@@ -3,7 +3,6 @@ import { Table,TableBody, TableCell,TableContainer, TableHead, TableRow, Paper, 
 import { TableInterface } from '../../constant/Interface'
 import Loader from "react-loader-spinner"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import PortableWifiOffIcon from '@mui/icons-material/PortableWifiOff'
 import {  faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 const TableComponent:React.FC<TableInterface> = ({columns, rows, loader}) => {
   const [page, setPage] = useState(0)

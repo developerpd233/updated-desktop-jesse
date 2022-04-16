@@ -1,8 +1,6 @@
 import { withStyles } from '@mui/styles'
 import { Checkbox } from '@mui/material'
 
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } }
-
 export const CssCheckboxField = withStyles({
     root: {
         '& .MuiFormControlLabel-label': {
@@ -14,28 +12,8 @@ export const CssCheckboxField = withStyles({
         '& .css-1960bxs-MuiTypography-root': {
             color:'#fff',
         }
-        // '& .MuiFormControlLabel-root': {
-        //     backgroundColor:'green'
-        // }
-
-        // '& .MuiButtonBase-root-MuiCheckbox-root.Mui-checked': {
-        //     color: '#fff',
-        // },
-        // '& .Mui-checked' : {
-        //     backgroundColor:'green'
-        // },
-        // '& .MuiFormControlLabel-root .MuiFormControlLabel-label': {
-        //     color:'white'
-        // }
-        // '& .MuiButtonBase-root-MuiCheckbox-root:hover': {
-        //     backgroundColor: '#fff',
-        // },
-        // '& .MuiButtonBase-root-MuiCheckbox-root.Mui-checked': {
-        //     color: '#fff',
-        // }
     }
 })(Checkbox);
-
 
 export const CustomCheckbox = withStyles({
   root: {

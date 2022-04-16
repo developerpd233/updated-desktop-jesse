@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import { Box, InputLabel, MenuItem, FormControl } from '@mui/material'
+import { Box, MenuItem, FormControl } from '@mui/material'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import { makeStyles } from '@mui/styles'
 

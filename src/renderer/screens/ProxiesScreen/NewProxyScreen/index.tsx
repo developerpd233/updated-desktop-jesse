@@ -133,7 +133,7 @@ const NewProxyScreen= ()=> {
     }
   }, [])
   const handleToda=()=>{
-    history.push('/startUpScreen')
+    history.push('/task')
   }
 
   return (

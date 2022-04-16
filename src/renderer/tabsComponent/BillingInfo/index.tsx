@@ -269,7 +269,7 @@ const BillingInfoComponent: React.FC<BillingInfo> = ({id}) => {
     }
   }
  const handleTo=()=>{
-   history.push('/startUpScreen')
+   history.push('/task')
  }
 
   const onSubmit = async (e:any) => {

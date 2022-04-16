@@ -9,6 +9,8 @@ const allTaskReducer = (state: object = {}, action: any) => {
             return obj;
         }
         case TASK_LIST_SUCCESS: {
+            // console.log(action.response.data, 'action.response.data');
+
             let obj: any = {
                 loading: false,
                 data: action.response.data,

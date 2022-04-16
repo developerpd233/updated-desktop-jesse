@@ -1,4 +1,4 @@
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import Switch, { SwitchProps } from '@mui/material/Switch';
 
 export const IOSSwitch = styled((props: SwitchProps) => (

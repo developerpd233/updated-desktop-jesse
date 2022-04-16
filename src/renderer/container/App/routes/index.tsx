@@ -1,16 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {  Route, Switch } from "react-router-dom";
 import asyncComponent from "../../../utils/asyncComponent";
-import { useHistory } from "react-router-dom";
-
 
 const App: React.FC = () => {
-    const history = useHistory();
-    useEffect(() => {
-        // document.title = "";
-        // history.push(`/profile`);
-    }, []);
-
     return (
         <div className="gx-main-content-wrapper">
             <Switch>

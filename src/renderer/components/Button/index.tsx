@@ -43,6 +43,26 @@ export const CssGradientButton = withStyles({
     },
 })(Button);
 
+
+
+export const StartTaskButton = withStyles({
+    root: {
+        color: '#fff',
+        background: 'linear-gradient(to right, #DA792D, #AC609E)',
+        textTransform:'uppercase',
+        borderRadius:30,
+        padding:'0px 15px',
+        left:-5,
+        '&:hover': {
+            backgroundPosition: "100% 0",
+            transition: 'all .4s ease-in-out'
+            // background: '#272727',
+            // textDecroation:'underline',
+            // color: 'linear-gradient(to right, #DA792D, #AC609E)',
+        },
+    },
+})(Button);
+
 export const CssBlackButton = withStyles({
   root: {
       color: '#fff',

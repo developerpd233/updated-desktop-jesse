@@ -15,11 +15,6 @@ export const profileList = () => (dispatch: Dispatch): any => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${sessionStorage.getItem('token')}`
       },
-      // params: {
-      //     ...(skip || skip === 0 ? { skip: skip } : {}),
-      //     ...(page ? { page: page } : {}),
-      //     ...(search ? { search: search } : {})
-      // }
   }).then((response: any) => {
     return dispatch({ type: PROFILE_LIST_SUCCESS, response: response });
   }).catch((error: any) => {
