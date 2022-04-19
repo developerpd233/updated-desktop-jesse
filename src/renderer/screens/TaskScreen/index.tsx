@@ -26,10 +26,44 @@ const TaskScreen = () => {
   let history = useHistory()
   const dispatch = useDispatch()
   const [loader, setLoader] = useState(false)
+  const [benefitsActive, setBenefitsActive] = useState(0)
 
   const { getAllTaskReducer } = useSelector((state: RootState) => {
     return state
   })
+
+  // Benefits Details
+  const benefits = [
+    {
+      title: 'Did they read your message?',
+      content: 'Get more Control. Find out which users have read your messages!',
+      color: '#ECBC0D'
+    },
+    {
+      title: 'See who’s checking you out',
+      content: 'Find your admirers. See who is viewing your profile and when they are viewing you',
+      color: '#47AF4A'
+    }
+  ]
+
+  useEffect(() => {
+    let rotationInterval = setInterval(() => {
+      // if (benefitsActive >= benefits.length) {
+      //   setBenefitsActive(0)
+      // } else {
+      //   setBenefitsActive(benefitsActive + 1)
+      // }
+      fetchMyAPI()
+    }, 10000)
+
+    //Clean up can be done like this
+    return () => {
+      clearInterval(rotationInterval);
+    }
+  }, [benefitsActive])
+
+  console.log(benefitsActive, 'benefitsActive');
+
 
   const handleRedirect = (id: any) => {
     sessionStorage.setItem('taskId', id);
@@ -75,6 +109,8 @@ const TaskScreen = () => {
       data: obj,
     }).then((response: any) => {
       console.log(response, 'response');
+      fetchMyAPI()
+
       setLoader(false)
 
     }).catch((error: any) => {
@@ -88,6 +124,40 @@ const TaskScreen = () => {
       }
     })
   }
+
+  const taskStop = async (id: any) => {
+    setLoader(true)
+    let obj = { task_status: "end" }
+    let url = `${baseURL}tasks/${id}`;
+    // console.log(url, 'url');
+
+    // if (allTasks[i].task_end !== "end" || allTasks[i].task_failed === "failed" || allTasks[i].task_failed === "start") {
+    axios({
+      method: "PUT",
+      url: url,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${sessionStorage.getItem('token')}`
+      },
+      data: obj,
+    }).then((response: any) => {
+      console.log(response, 'response');
+      setLoader(false)
+      fetchMyAPI()
+
+    }).catch((error: any) => {
+      console.log(error, 'error')
+      setLoader(false)
+      if (error.message === "Network Error") {
+
+      }
+      if (error.response.status === 401) {
+
+      }
+    })
+  }
+
 
 
   async function fetchMyAPI() {
@@ -118,23 +188,26 @@ const TaskScreen = () => {
                 }} style={{ cursor: 'pointer' }}><FontAwesomeIcon icon={faTrashAlt} size="1x" /></Box>
               </Grid>
 
-              <Grid item xs={12} md={4}>
+              {data?.task_status === "start" ? <Grid item xs={12} md={4}>
                 <Box
-                  // onClick={() => {
-                  //   setConfirmDialog({
-                  //     isOpen: true,
-                  //     title: 'Are You Sure to Delete?',
-                  //     subTitle: "You can't undo this operation",
-                  //     onConfirm: () => { handleDelete(data.id) }
-                  //   })
-                  // }} 
                   style={{ cursor: 'pointer' }}>
                   {/* <FontAwesomeIcon icon={faTrashAlt} size="1x" /> */}
                   <StartTaskButton type="submit"
-                    onClick={() => { taskStart(data.id) }}
-                  >Start</StartTaskButton>
+                    onClick={() => { taskStop(data.id) }}
+                  >Stop</StartTaskButton>
                 </Box>
               </Grid>
+                :
+                <Grid item xs={12} md={4}>
+                  <Box
+                    style={{ cursor: 'pointer' }}>
+                    {/* <FontAwesomeIcon icon={faTrashAlt} size="1x" /> */}
+                    <StartTaskButton type="submit"
+                      onClick={() => { taskStart(data.id) }}
+                    >Start</StartTaskButton>
+                  </Box>
+                </Grid>
+              }
             </Grid>
           </Box>,
 

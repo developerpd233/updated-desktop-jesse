@@ -10,15 +10,16 @@ const ConfirmDialog = ({ confirmDialog, setConfirmDialog }) => {
     return (
         <Dialog open={confirmDialog.isOpen} classes={{ paper: classes.dialog }}>
             <DialogTitle className={classes.dialogTitle}>
-                <img src={`${confirmDialog.order_image}`} />
+                <img style={{ maxHeight: "300px", maxWidth: "800px" }} src={`${confirmDialog.order_image}`} />
             </DialogTitle>
             <DialogContent className={classes.dialogContent}>
                 <Typography variant='h6'>{`Product Name: ${confirmDialog.product_name}`}</Typography>
                 <Typography variant='subtitle2'>{`Product Description: ${confirmDialog.product_description}`}</Typography>
+                <Typography variant='subtitle2'>{`Order ID: ${confirmDialog.order_id}`}</Typography>   
                 <Typography variant='subtitle2'>{`Product Price: ${confirmDialog.product_price}`}</Typography>
                 <Typography variant='subtitle2'>{`Product Quantity: ${confirmDialog.product_qty}`}</Typography>
-                <Typography variant='subtitle2'>{`Product Quantity: ${confirmDialog?.task?.product}`}</Typography>
-                
+                {/* <Typography variant='subtitle2'>{`Product Quantity: ${confirmDialog?.task?.product}`}</Typography> */}
+
                 {/* <Typography variant='subtitle2'>{confirmDialog.product_description}</Typography>
                 <Typography variant='subtitle2'>{confirmDialog.product_description}</Typography>
                 <Typography variant='subtitle2'>{confirmDialog.product_description}</Typography> */}

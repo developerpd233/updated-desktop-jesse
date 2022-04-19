@@ -1,12 +1,11 @@
 import { Box, Grid } from '@mui/material';
 import BackgroundImage from '../../assets/bg.png'
-import { CssGradientButton } from '../../components/Button'
 import { useHistory } from "react-router-dom"
 import TableComponent from '../../components/Table'
 import { orderColumns } from '../../constant/Columns'
 import { OrderData } from '../../constant/Interface'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt, faEdit, faEye } from '@fortawesome/free-solid-svg-icons'
+import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from "react-redux"
 import { orderList } from '../../redux/actions/order-action'
 import { useState, useEffect } from 'react'
