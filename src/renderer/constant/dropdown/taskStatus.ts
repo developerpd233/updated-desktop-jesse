@@ -1,10 +1,18 @@
 export const statusData = [
   {
-    name: 'Enabled',
-    value: '1'
+    name: 'Start',
+    value: 'start'
   },
   {
-    name: 'Disabled',
-    value: '0'
+    name: 'Processing',
+    value: 'processing'
+  },
+  {
+    name: 'Failed',
+    value: 'failed'
+  },
+  {
+    name: 'End',
+    value: 'end'
   }
 ]
