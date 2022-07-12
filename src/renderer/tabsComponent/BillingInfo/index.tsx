@@ -277,7 +277,9 @@ const BillingInfoComponent: React.FC<BillingInfo> = ({id}) => {
     errorObject = {}
     for (let [key, value] of Object.entries(values)) {
       if (value.length === 0 &&  key !== 'loginPage' &&
-        key !== 'discountCode' && key !== 'userPassword' && key !== 'userName' && key !== 'color' && key !== 'size'  && key !== 'site') {
+        key !== 'discountCode' && key !== 'userPassword' && key !== 'userName' && key !== 'color' && key !== 'size'  && key !== 'site'
+         && key !== 'startDate' && key !== 'endDate' && key !== 'status'
+         ) {
           if(key === 'productName' || key === 'productLink' || key === 'quantity')
             errorObject[key] = `Please enter a ${key.replace(/([a-z])([A-Z])/g, '$1 $2')} value`
           else
@@ -296,8 +298,10 @@ const BillingInfoComponent: React.FC<BillingInfo> = ({id}) => {
         status: values.status,
         profile_id: parseInt(values.profile),
         proxy_id: parseInt(values.proxy),
-        start_time: moment(values.startDate).format("YYYY-MM-DD HH:mm:ss"),
-        end_time: moment(values.endDate).format("YYYY-MM-DD HH:mm:ss"),
+        start_time: values.startDate ? moment(values.startDate).format("YYYY-MM-DD HH:mm:ss"):"" ,
+        end_time: values.endDate ? moment(values.endDate).format("YYYY-MM-DD HH:mm:ss") :"",
+        // start_time:"",
+        // end_time: "",
         task_status: values.status,
         login_status: values.loginStatus,
         task_type: parseInt(values.taskTypes),
@@ -317,6 +321,8 @@ const BillingInfoComponent: React.FC<BillingInfo> = ({id}) => {
 
       let result: any = await dispatch(createNewTask(data))
       if (result.type === 'TASK_CREATE_SUCCESS') {
+        console.log("working");
+        
         history.push('/task')
       }
       else if (result.type === 'TASK_CREATE_ERROR') {
@@ -403,12 +409,12 @@ const BillingInfoComponent: React.FC<BillingInfo> = ({id}) => {
             <Grid item xs={12} sm={12} lg={6} md={6}>
               <Box sx={{  fontFamily:'roboto', fontWeight:400, color: '#C67B4D', fontSize:12, marginBottom:0.5 }}>Start Date</Box>
               <CustomTextField onChange={handleStartDate} value={values.startDate} type="datetime-local" size='small' fullWidth inputProps={{min: moment(new Date).format("YYYY-MM-DD HH:mm").replace(' ', 'T')}} InputProps={{style:{color:'#fff'}}} />
-              {errorObject && errorObject['startDate'] !== '' ? <FormHelperText className="form-error-text" style={{color:'red'}}>{errorObject['startDate']}</FormHelperText> : ""}
+              {/* {errorObject && errorObject['startDate'] !== '' ? <FormHelperText className="form-error-text" style={{color:'red'}}>{errorObject['startDate']}</FormHelperText> : ""} */}
             </Grid>
             <Grid item xs={12} sm={12} lg={6} md={6}>
               <Box sx={{  fontFamily:'roboto', fontWeight:400, color: '#C67B4D', fontSize:12, marginBottom:0.5 }}>End Date</Box>
               <CustomTextField onChange={handleEndDate} value={values.endDate} id="datetime-local" type="datetime-local" size='small' fullWidth inputProps={{min: values.startDate}} InputProps={{style:{color:'#fff'}}} />
-              {errorObject && errorObject['endDate'] !== '' ? <FormHelperText className="form-error-text" style={{color:'red'}}>{errorObject['endDate']}</FormHelperText> : ""}
+              {/* {errorObject && errorObject['endDate'] !== '' ? <FormHelperText className="form-error-text" style={{color:'red'}}>{errorObject['endDate']}</FormHelperText> : ""} */}
             </Grid>
           </Grid>
         </Grid>
@@ -416,7 +422,7 @@ const BillingInfoComponent: React.FC<BillingInfo> = ({id}) => {
           <Divider orientation="vertical" className={classes.divider} />
         </Grid>
         <Grid item xs={12} sm={12} md={5} lg={5} columnSpacing={1}>
-          <Box sx={{ typography: 'subtitle2', fontFamily:'roboto', fontWeight:700, color: '#C67B4D', marginBottom:2 }}>100 Thices</Box>
+          {/* <Box sx={{ typography: 'subtitle2', fontFamily:'roboto', fontWeight:700, color: '#C67B4D', marginBottom:2 }}>100 Thices</Box> */}
             <Grid item xs={12} sm={12} lg={12} md={12} sx={{marginBottom:1}}>
               <Box sx={{  fontFamily:'roboto', fontWeight:400, color: '#fff', marginBottom:0.5, fontSize:12 }}>Store</Box>
                 <FormControl fullWidth>
@@ -457,10 +463,10 @@ const BillingInfoComponent: React.FC<BillingInfo> = ({id}) => {
                 </FormControl>
                 {errorObject && errorObject['proxy'] !== '' ? <FormHelperText className="form-error-text" style={{color:'red'}}>{errorObject['proxy']}</FormHelperText> : ""}
             </Grid>
-            <Grid item xs={12} sm={12} lg={12} md={12} sx={{marginBottom:1}}>
-              <Box sx={{  fontFamily:'roboto', fontWeight:400, color: '#fff', marginBottom:0.5, fontSize:12 }}>Task Status</Box>
+            {/* <Grid item xs={12} sm={12} lg={12} md={12} sx={{marginBottom:1}}>
+              <Box sx={{  fontFamily:'roboto', fontWeight:400, color: '#fff', marginBottom:0.5, fontSize:12 }}>Task Status</Box> */}
               {/* <CustomizeSelectComponent /> */}
-                <FormControl fullWidth>
+                {/* <FormControl fullWidth>
                   <Select value={values.status} onChange={handleStatusChange} size='small' MenuProps={{ classes: { paper: classes.select } }} inputProps={{classes:{icon: classes.icon}}} className={classes.root}>
                     {statusData.map((data:any, index:number)=> {
                       return(
@@ -470,7 +476,7 @@ const BillingInfoComponent: React.FC<BillingInfo> = ({id}) => {
                   </Select>
                 </FormControl>
                 {errorObject && errorObject['status'] !== '' ? <FormHelperText className="form-error-text" style={{color:'red'}}>{errorObject['status']}</FormHelperText> : ""}
-            </Grid>
+            </Grid> */}
         </Grid>
       </Grid>
       <br />
@@ -571,9 +577,9 @@ const BillingInfoComponent: React.FC<BillingInfo> = ({id}) => {
       </Grid>
       <Grid container columnSpacing={1} sx={{marginTop:2, marginBottom:2}} display={'flex'} justifyContent={'center'} alignItems={'center'}>
         <Stack direction="row" spacing={2}>
-          <Button  variant="contained" sx={{borderRadius:30, textTransform:'capitalize', padding:'5px 30px', background:'transparent', border:'1px solid #DA792D'}}>
+          {/* <Button  variant="contained" sx={{borderRadius:30, textTransform:'capitalize', padding:'5px 30px', background:'transparent', border:'1px solid #DA792D'}}>
             Save & Start
-          </Button>
+          </Button> */}
           <Button onClick={handleTo} variant="contained" sx={{borderRadius:30, textTransform:'capitalize', padding:'5px 30px', background:'transparent', border:'1px solid #DA792D'}}>
             Cancel
           </Button>

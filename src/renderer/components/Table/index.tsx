@@ -19,7 +19,7 @@ const TableComponent:React.FC<TableInterface> = ({columns, rows, loader}) => {
   }
 
   return(
-    <Paper sx={{background: 'rgba(235, 237, 239, 0.2)', borderRadius:4, marginLeft:10, marginRight:10, height:'min-content', maxHeight:'80vh', overflowY:'scroll'}} className='table-scroll'>
+    <Paper sx={{background: 'none',  marginLeft:10, marginRight:10, height:'min-content', maxHeight:'80vh', overflowY:'scroll'}} className='table-scroll'>
       <TableContainer>
         <Table sx={{ minWidth: 650,height:'100%' }} aria-label="simple table">
           <TableHead>

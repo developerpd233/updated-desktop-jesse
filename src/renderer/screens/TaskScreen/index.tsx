@@ -296,8 +296,23 @@ const TaskScreen = () => {
 
   return (
     <Box display={'flex'} justifyContent={'flex-start'} flexDirection={'column'} sx={{ maxWidth: '100vw', height: '100vh', color: 'secondary.main', backgroundImage: `url(${BackgroundImage})`, padding: '20px 20px' }}>
+      
+      <Box sx={{ marginTop: 10 }}>
+        <TableComponent columns={taskColumns} rows={rows} loader={getAllTaskReducer?.loading} />
+      </Box>
+      
+      {/* {!getAllTaskReducer.loading ?
+        <Box sx={{ display:'flex', justifyContent:'center', alignItems:'center', marginTop:10}}>
+          <TableComponent columns={taskColumns} rows={rows} />
+        </Box> :
+        <Box sx={{ display:'flex', justifyContent:'center', alignItems:'center', width:'100%', height:'80vh'}}>
+          <Loader type="Bars" color="#DA792D" height={80} width={80}  />
+        </Box>
+      } */}
+      <Notifications notify={notify} setNotify={setNotify} />
+      <ConfirmDialog confirmDialog={confirmDialog} setConfirmDialog={setConfirmDialog} />
       <Box display={'flex'} justifyContent={'flex-end'} flexDirection={'row'}>
-        <Grid container item xs={12} sm={12} md={12} lg={12} alignItems="center" justifyContent="flex-end" direction="row" sx={{}}>
+        <Grid container item xs={12} sm={12} md={12} lg={12} alignItems="center" justifyContent="flex-start" direction="row" marginLeft={10} sx={{}}>
           {/* <Box sx={{marginRight:2}}>
           <CssGradientButton variant="contained" component="label"> <CSVLink  {...csvReport}>Export</CSVLink> </CssGradientButton>
  
@@ -310,19 +325,6 @@ const TaskScreen = () => {
           </Box>
         </Grid>
       </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 10 }}>
-        <TableComponent columns={taskColumns} rows={rows} loader={getAllTaskReducer?.loading} />
-      </Box>
-      {/* {!getAllTaskReducer.loading ?
-        <Box sx={{ display:'flex', justifyContent:'center', alignItems:'center', marginTop:10}}>
-          <TableComponent columns={taskColumns} rows={rows} />
-        </Box> :
-        <Box sx={{ display:'flex', justifyContent:'center', alignItems:'center', width:'100%', height:'80vh'}}>
-          <Loader type="Bars" color="#DA792D" height={80} width={80}  />
-        </Box>
-      } */}
-      <Notifications notify={notify} setNotify={setNotify} />
-      <ConfirmDialog confirmDialog={confirmDialog} setConfirmDialog={setConfirmDialog} />
     </Box>
   )
 }

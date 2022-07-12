@@ -11,7 +11,20 @@ body {
   position: absolute;
   margin-top: -2px;
 }
-
+@media (min-width: 1600px) {
+  .css-rorn0c-MuiTableContainer-root{ 
+    overflow-x: hidden!important; 
+  }
+}
+.css-1ab8mew-MuiTable-root{
+  width: 97%!important;
+}
+/* .css-rorn0c-MuiTableContainer-root{ */
+  /* overflow-x: hidden!important; */
+/* } */
+/* .css-1q5xnp4-MuiTable-root {
+width: 50%!important;
+} */
 .active {
   color:#C67B4D !important;
   /* border-bottom: 2px solid green; */

@@ -7,7 +7,7 @@ const NewTaskScreen = () => {
 
   const tabs = [
     {
-        name: 'Billing Info',
+        name: 'Create Task',
         value: '1'
     },
     // {
