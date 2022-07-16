@@ -39,8 +39,8 @@ const Raffal = () => {
   // }
 
   return (
-    <Box display={'flex'} justifyContent={'center'} alignitem={'center'}  sx={{ maxWidth: '100vw', height: 'calc(100vh - 128px)', color: 'secondary.main', backgroundImage: `url(${BackgroundImage})`, padding: '20px 20px' }}>
-   <Typography sx={{marginTop:"171px",fontSize:"70px"}}>coming soon</Typography>
+    <Box display={'flex'} justifyContent={'flex-start'} flexDirection={'column'} sx={{ maxWidth: '100vw', height: '100vh', color: 'secondary.main', backgroundImage: `url(${BackgroundImage})`, padding: '20px 20px' }}>
+   <Typography sx={{marginTop:"171px",fontSize:"70px",textAlign:'center'}}>coming soon</Typography>
     </Box>
   )
 }

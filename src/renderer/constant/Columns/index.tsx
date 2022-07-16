@@ -141,12 +141,12 @@ export const taskColumns: TaskColumns[] = [
     minWidth: 100,
     textTransform: 'capitalize'
   },
-  {
-    id: 'processingStatus',
-    label: 'Processing Status',
-    minWidth: 100,
-    textTransform: 'capitalize'
-  },
+  // {
+  //   id: 'processingStatus',
+  //   label: 'Processing Status',
+  //   minWidth: 100,
+  //   textTransform: 'capitalize'
+  // },
   {
     id: 'action',
     label: 'Action',

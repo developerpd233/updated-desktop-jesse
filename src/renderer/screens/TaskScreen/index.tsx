@@ -15,6 +15,7 @@ import Notifications from '../../components/Notifications'
 import ConfirmDialog from '../../components/ConfirmDialogbox'
 import moment from 'moment';
 import { baseURL } from '../../constant/url'
+import { textAlign } from '@mui/system';
 const axios = require("axios")
 
 const TaskScreen = () => {
@@ -71,6 +72,7 @@ const TaskScreen = () => {
   }
 
   console.log(rows, 'rows');
+  
 
 
   const handleDelete = async (id: any) => {
@@ -165,9 +167,72 @@ const TaskScreen = () => {
     if (result.type === 'TASK_LIST_SUCCESS') {
       const row: any = [];
       let obj: any = {}
+      
       result.response.data.data?.map((data: any, index: number) => {
-        obj = createData(index++, data.store && data.store?.name, data.product_name && data.product_name,
-          <div>{moment(data.start_time).format("Do MMM YY")}<br /> to {moment(data.end_time).format("Do MMM YY")}</div>,
+        if(data.start_time == null && data.end_time != null){
+        //  let sTime= 'none';
+         obj = createData(index++, data.store && data.store?.name, data.product_name && data.product_name,
+          <div >-</div>,
+        data.quantity, data.profile && data.profile.name, data.proxy && data.proxy.proxy,
+        data.status === '1' ? 'Enabled' : 'Disabled',
+        data?.task_status,
+        data?.status,
+        <Box display="flex" flexDirection="row" justifyContent="space-around">
+          <Grid container>
+            <Grid item xs={12} md={4}>
+              <Box onClick={() => handleRedirect(data.id)} style={{ cursor: 'pointer' }}><FontAwesomeIcon icon={faEdit} size="1x" /></Box>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Box onClick={() => {
+                setConfirmDialog({
+                  isOpen: true,
+                  title: 'Are You Sure to Delete?',
+                  subTitle: "You can't undo this operation",
+                  onConfirm: () => { handleDelete(data.id) }
+                })
+              }} style={{ cursor: 'pointer' }}><FontAwesomeIcon icon={faTrashAlt} size="1x" /></Box>
+            </Grid>
+
+            {data?.task_status === "start" ? <Grid item xs={12} md={4}>
+              <Box
+                style={{ cursor: 'pointer' }}>
+                {/* <FontAwesomeIcon icon={faTrashAlt} size="1x" /> */}
+                <StartTaskButton type="submit"
+                  onClick={() => { taskStop(data.id) }}
+                >Stop</StartTaskButton>
+              </Box>
+            </Grid>
+              :
+              <Grid item xs={12} md={4}>
+                <Box
+                  style={{ cursor: 'pointer' }}>
+                  {/* <FontAwesomeIcon icon={faTrashAlt} size="1x" /> */}
+                  <StartTaskButton type="submit"
+                    onClick={() => { taskStart(data.id) }}
+                  >Start</StartTaskButton>
+                </Box>
+              </Grid>
+            }
+          </Grid>
+        </Box>,
+
+        // <Box display="flex" flexDirection="row" justifyContent="space-around">
+        //   <Grid container>
+        //     <Grid item xs={12} md={6}>
+        //       <Box
+        //         // onClick={() => handleRedirect(data.id)}
+        //         style={{ cursor: 'pointer' }}>
+        //       </Box>
+        //     </Grid>
+        //   </Grid>
+        // </Box>
+
+
+      )
+        }else if(data.end_time == null && data.start_time != null){
+          // let sTime= 'none';
+          obj = createData(index++, data.store && data.store?.name, data.product_name && data.product_name,
+            <div>-</div>,
           data.quantity, data.profile && data.profile.name, data.proxy && data.proxy.proxy,
           data.status === '1' ? 'Enabled' : 'Disabled',
           data?.task_status,
@@ -224,6 +289,127 @@ const TaskScreen = () => {
 
 
         )
+        }else if(data.end_time == null && data.start_time == null){
+          // const sTime=moment(data.start_time).format("Do MMM YY")+"<br /> to"+moment(data.end_time).format("Do MMM YY");
+          obj = createData(index++, data.store && data.store?.name, data.product_name && data.product_name,
+            <div style={{textAlign:'center'}}>-</div>,
+          data.quantity, data.profile && data.profile.name, data.proxy && data.proxy.proxy,
+          data.status === '1' ? 'Enabled' : 'Disabled',
+          data?.task_status,
+          data?.status,
+          <Box display="flex" flexDirection="row" justifyContent="space-around">
+            <Grid container>
+              <Grid item xs={12} md={4}>
+                <Box onClick={() => handleRedirect(data.id)} style={{ cursor: 'pointer' }}><FontAwesomeIcon icon={faEdit} size="1x" /></Box>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <Box onClick={() => {
+                  setConfirmDialog({
+                    isOpen: true,
+                    title: 'Are You Sure to Delete?',
+                    subTitle: "You can't undo this operation",
+                    onConfirm: () => { handleDelete(data.id) }
+                  })
+                }} style={{ cursor: 'pointer' }}><FontAwesomeIcon icon={faTrashAlt} size="1x" /></Box>
+              </Grid>
+
+              {data?.task_status === "start" ? <Grid item xs={12} md={4}>
+                <Box
+                  style={{ cursor: 'pointer' }}>
+                  {/* <FontAwesomeIcon icon={faTrashAlt} size="1x" /> */}
+                  <StartTaskButton type="submit"
+                    onClick={() => { taskStop(data.id) }}
+                  >Stop</StartTaskButton>
+                </Box>
+              </Grid>
+                :
+                <Grid item xs={12} md={4}>
+                  <Box
+                    style={{ cursor: 'pointer' }}>
+                    {/* <FontAwesomeIcon icon={faTrashAlt} size="1x" /> */}
+                    <StartTaskButton type="submit"
+                      onClick={() => { taskStart(data.id) }}
+                    >Start</StartTaskButton>
+                  </Box>
+                </Grid>
+              }
+            </Grid>
+          </Box>,
+
+          // <Box display="flex" flexDirection="row" justifyContent="space-around">
+          //   <Grid container>
+          //     <Grid item xs={12} md={6}>
+          //       <Box
+          //         // onClick={() => handleRedirect(data.id)}
+          //         style={{ cursor: 'pointer' }}>
+          //       </Box>
+          //     </Grid>
+          //   </Grid>
+          // </Box>
+
+
+        )
+        }else{
+          obj = createData(index++, data.store && data.store?.name, data.product_name && data.product_name,
+            <div>{moment(data.start_time).format("Do MMM YY")}<br/> to{moment(data.end_time).format("Do MMM YY")}</div>,
+          data.quantity, data.profile && data.profile.name, data.proxy && data.proxy.proxy,
+          data.status === '1' ? 'Enabled' : 'Disabled',
+          data?.task_status,
+          data?.status,
+          <Box display="flex" flexDirection="row" justifyContent="space-around">
+            <Grid container>
+              <Grid item xs={12} md={4}>
+                <Box onClick={() => handleRedirect(data.id)} style={{ cursor: 'pointer' }}><FontAwesomeIcon icon={faEdit} size="1x" /></Box>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <Box onClick={() => {
+                  setConfirmDialog({
+                    isOpen: true,
+                    title: 'Are You Sure to Delete?',
+                    subTitle: "You can't undo this operation",
+                    onConfirm: () => { handleDelete(data.id) }
+                  })
+                }} style={{ cursor: 'pointer' }}><FontAwesomeIcon icon={faTrashAlt} size="1x" /></Box>
+              </Grid>
+
+              {data?.task_status === "start" ? <Grid item xs={12} md={4}>
+                <Box
+                  style={{ cursor: 'pointer' }}>
+                  {/* <FontAwesomeIcon icon={faTrashAlt} size="1x" /> */}
+                  <StartTaskButton type="submit"
+                    onClick={() => { taskStop(data.id) }}
+                  >Stop</StartTaskButton>
+                </Box>
+              </Grid>
+                :
+                <Grid item xs={12} md={4}>
+                  <Box
+                    style={{ cursor: 'pointer' }}>
+                    {/* <FontAwesomeIcon icon={faTrashAlt} size="1x" /> */}
+                    <StartTaskButton type="submit"
+                      onClick={() => { taskStart(data.id) }}
+                    >Start</StartTaskButton>
+                  </Box>
+                </Grid>
+              }
+            </Grid>
+          </Box>,
+
+          // <Box display="flex" flexDirection="row" justifyContent="space-around">
+          //   <Grid container>
+          //     <Grid item xs={12} md={6}>
+          //       <Box
+          //         // onClick={() => handleRedirect(data.id)}
+          //         style={{ cursor: 'pointer' }}>
+          //       </Box>
+          //     </Grid>
+          //   </Grid>
+          // </Box>
+
+
+        )
+        }
+       
         row.push(obj)
       })
       setRows(row)
