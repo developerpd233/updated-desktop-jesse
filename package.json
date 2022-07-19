@@ -250,6 +250,7 @@
     "electron-log": "^4.4.1",
     "electron-updater": "^4.3.9",
     "history": "4.x.x",
+    "jquery": "^3.6.0",
     "moment": "^2.29.1",
     "nprogress": "^0.2.0",
     "react": "^17.0.2",
