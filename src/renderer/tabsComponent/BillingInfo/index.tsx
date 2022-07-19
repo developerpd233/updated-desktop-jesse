@@ -302,7 +302,7 @@ const BillingInfoComponent: React.FC<BillingInfo> = ({id}) => {
         end_time: values.endDate ? moment(values.endDate).format("YYYY-MM-DD HH:mm:ss") :"",
         // start_time:"",
         // end_time: "",
-        task_status: values.status,
+        task_status: 'Start',
         login_status: values.loginStatus,
         task_type: parseInt(values.taskTypes),
         username: values.userName,

@@ -232,6 +232,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "@electron/remote": "^2.0.8",
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
