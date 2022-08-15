@@ -93,7 +93,7 @@ const OrderScreen = () => {
   console.log(getAllOrderReducer, 'getAllOrderReducer');
 
   return (
-    <Box display={'flex'} justifyContent={'flex-start'} flexDirection={'column'} sx={{ maxWidth: '100vw', height: '100vh', color: 'secondary.main', backgroundImage: `url(${BackgroundImage})`, padding: '20px 20px' }}>
+    <Box display={'flex'} justifyContent={'flex-start'} flexDirection={'column'} sx={{ maxWidth: '100vw', height: '150vh', color: 'secondary.main', backgroundImage: `url(${BackgroundImage})`, padding: '20px 20px' }}>
       {/* <Box display={'flex'} justifyContent={'flex-end'} flexDirection={'row'}>
         <Grid container item xs={12} sm={12} md={12} lg={12} alignItems="center" justifyContent="flex-end" direction="row" sx={{}}>
           <Box sx={{marginRight:2}}>

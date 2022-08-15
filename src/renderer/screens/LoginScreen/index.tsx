@@ -17,7 +17,12 @@ import { userLogin } from '../../redux/actions/login-action'
 import Notifications from '../../components/Notifications'
 import ConfirmDialog from '../../components/ConfirmDialogbox'
 import MinimizeIcon from '@mui/icons-material/Minimize';
+import { IpcMain } from 'electron';
+// import { app } from 'electron';
+// const {remote} = require('electron');
+// var win = remote.getCurrentWindow();
 
+// import './menu'
 const LoginScreen = () => {
   const [email, setEmail] = useState('')
   const [showpass, setshowpass] = useState(true)
@@ -35,6 +40,12 @@ const LoginScreen = () => {
   })
   const handler = () => {
     setshowpass(!showpass)
+  }
+
+  const HandleMinimize = () => {
+    console.log("chal gaya");
+    // app.quit()
+    // win.minimize();
   }
   const onSubmit = async () => {
     let data = {
@@ -63,8 +74,8 @@ const LoginScreen = () => {
       <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} sx={{ maxWidth: '100vw', height: '100vh', maxHeight: '100%', color: 'secondary.main', backgroundImage: `url(${BackgroundImage})` }}>
         <Box display={'flex'} justifyContent={'flex-end'} sx={{ position: "absolute", top: "1px", width: "100%", }}  >
           <Box display={'flex'} sx={{ background: 'linear-gradient(to right, #DA792D, #AC609E)', borderBottomLeftRadius: 40, height: 30, width: 70, display: "flex", justifyContent: "flex-end", alignItems: "center" }} >
-            <MinimizeIcon sx={{ position: "relative", top: "-7px", cursor: "pointer" }} />
-            <CloseIcon sx={{ cursor: "pointer" }} />
+            <MinimizeIcon sx={{ position: "relative", top: "-7px", cursor: "pointer" }} onClick={HandleMinimize}/>
+            <CloseIcon id="minimize" sx={{ cursor: "pointer" }} />
           </Box>
         </Box>
         <Box display={'flex'} alignItems={'center'} >
